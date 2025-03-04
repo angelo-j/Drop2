@@ -6,6 +6,7 @@ import com.badlogic.drop2.managers.SoundManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -18,6 +19,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Slider;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.ScreenUtils;
 
@@ -39,7 +41,6 @@ public class OptionsScreen implements Screen {
         this.batch = game.batch;
         this.font = game.font;
 
-        // Load the same background texture as other screens
         backgroundTexture = new Texture("visual/background.png");
 
         stage = new Stage();
@@ -53,19 +54,21 @@ public class OptionsScreen implements Screen {
     private void createOptionsMenu() {
         Table table = new Table();
         table.setFillParent(true);
+        table.center();
         stage.addActor(table);
 
         Label.LabelStyle labelStyle = new Label.LabelStyle();
         labelStyle.font = font;
 
-        Label titleLabel = new Label("Options", labelStyle);
-        titleLabel.setFontScale(2);
-        titleLabel.setAlignment(Align.center);
-        table.add(titleLabel).padBottom(30).row();
-
         TextButton.TextButtonStyle buttonStyle = new TextButton.TextButtonStyle();
         buttonStyle.font = font;
         buttonStyle.up = null;
+        buttonStyle.overFontColor = Color.YELLOW;  // Yellow border on hover
+
+        Label titleLabel = new Label("Options", labelStyle);
+        titleLabel.setFontScale(2);
+        titleLabel.setAlignment(Align.center);
+        table.add(titleLabel).padBottom(30).align(Align.center).row();
 
         TextButton resetScoreButton = new TextButton("Reset High Score", buttonStyle);
         resetScoreButton.addListener(new ClickListener() {
@@ -78,10 +81,10 @@ public class OptionsScreen implements Screen {
         });
         table.add(resetScoreButton).padTop(20).align(Align.center).row();
 
-        // Sound Volume
         Label soundLabel = new Label("Sound Effects Volume", labelStyle);
         soundLabel.setAlignment(Align.center);
-        table.add(soundLabel).padBottom(10).row();
+        table.add(soundLabel).padBottom(10).align(Align.center).row();
+
         Slider soundSlider = new Slider(0, 1, 0.1f, false, skin);
         soundSlider.setValue(soundVolume);
         soundSlider.addListener(event -> {
@@ -90,10 +93,14 @@ public class OptionsScreen implements Screen {
             saveSettings();
             return false;
         });
-        table.add(soundSlider).width(300).padBottom(20).row();
+        table.add(soundSlider).width(300).padBottom(20).align(Align.center).row();
 
-        // Sound Mute
-        CheckBox soundMuteToggle = new CheckBox(" Mute Sound Effects", skin);
+        CheckBox.CheckBoxStyle checkBoxStyle = new CheckBox.CheckBoxStyle();
+        checkBoxStyle.font = font;
+        checkBoxStyle.checkboxOn = skin.getDrawable("check-on");
+        checkBoxStyle.checkboxOff = skin.getDrawable("check-off");
+
+        CheckBox soundMuteToggle = new CheckBox(" Mute Sound Effects", checkBoxStyle);
         soundMuteToggle.setChecked(soundMuted);
         soundMuteToggle.addListener(event -> {
             soundMuted = soundMuteToggle.isChecked();
@@ -101,12 +108,12 @@ public class OptionsScreen implements Screen {
             saveSettings();
             return false;
         });
-        table.add(soundMuteToggle).padBottom(20).row();
+        table.add(soundMuteToggle).padBottom(20).align(Align.center).row();
 
-        // Music Volume
         Label musicLabel = new Label("Music Volume", labelStyle);
         musicLabel.setAlignment(Align.center);
-        table.add(musicLabel).padBottom(10).row();
+        table.add(musicLabel).padBottom(10).align(Align.center).row();
+
         Slider musicSlider = new Slider(0, 1, 0.1f, false, skin);
         musicSlider.setValue(musicVolume);
         musicSlider.addListener(event -> {
@@ -115,10 +122,9 @@ public class OptionsScreen implements Screen {
             saveSettings();
             return false;
         });
-        table.add(musicSlider).width(300).padBottom(20).row();
+        table.add(musicSlider).width(300).padBottom(20).align(Align.center).row();
 
-        // Music Mute
-        CheckBox musicMuteToggle = new CheckBox(" Mute Music", skin);
+        CheckBox musicMuteToggle = new CheckBox(" Mute Music", checkBoxStyle);
         musicMuteToggle.setChecked(musicMuted);
         musicMuteToggle.addListener(event -> {
             musicMuted = musicMuteToggle.isChecked();
@@ -126,9 +132,8 @@ public class OptionsScreen implements Screen {
             saveSettings();
             return false;
         });
-        table.add(musicMuteToggle).padBottom(20).row();
+        table.add(musicMuteToggle).padBottom(20).align(Align.center).row();
 
-        // Back Button
         TextButton backButton = new TextButton("Back", buttonStyle);
         backButton.addListener(new ClickListener() {
             @Override
@@ -137,7 +142,7 @@ public class OptionsScreen implements Screen {
                 ScreenManager.setScreen(ScreenManager.ScreenType.MAIN_MENU);
             }
         });
-        table.add(backButton).padTop(30);
+        table.add(backButton).padTop(30).align(Align.center);
     }
 
     private void loadSettings() {

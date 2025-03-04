@@ -6,6 +6,7 @@ import com.badlogic.drop2.managers.SoundManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -44,6 +45,82 @@ public class MenuScreen implements Screen {
         createMenu();
     }
 
+    private void createMenu() {
+        Table table = new Table();
+        table.setFillParent(true);
+        table.center();
+        stage.addActor(table);
+
+        TextButton.TextButtonStyle buttonStyle = new TextButton.TextButtonStyle();
+        buttonStyle.font = font;
+        buttonStyle.up = null;
+        buttonStyle.overFontColor = Color.YELLOW;
+
+        Label.LabelStyle labelStyle = new Label.LabelStyle();
+        labelStyle.font = font;
+
+        Label titleLabel = new Label("Drop", labelStyle);
+        titleLabel.setFontScale(3);
+        titleLabel.setAlignment(Align.center);
+        table.add(titleLabel).padBottom(30).align(Align.center).row();
+
+        Label highScoreLabel = new Label("High Score: " + highScore, labelStyle);
+        highScoreLabel.setAlignment(Align.center);
+        table.add(highScoreLabel).padBottom(20).align(Align.center).row();
+
+        TextButton startButton = new TextButton("Start Game", buttonStyle);
+        startButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                ScreenManager.setScreen(ScreenManager.ScreenType.GAME);
+            }
+        });
+
+        TextButton optionsButton = new TextButton("Options", buttonStyle);
+        optionsButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                ScreenManager.setScreen(ScreenManager.ScreenType.OPTIONS);
+            }
+        });
+
+        TextButton exitGameButton = new TextButton("Exit Game", buttonStyle);
+        exitGameButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                Gdx.app.exit();
+            }
+        });
+
+        table.add(startButton).padBottom(20).align(Align.center).row();
+        table.add(optionsButton).padBottom(20).align(Align.center).row();
+        table.add(exitGameButton).align(Align.center).row();
+    }
+
+    private int loadHighScore() {
+        FileHandle file = Gdx.files.local("highscore.txt");
+        if (file.exists()) {
+            try {
+                return Integer.parseInt(file.readString());
+            } catch (NumberFormatException e) {
+                return 0;
+            }
+        } else {
+            return 0;
+        }
+    }
+
+    @Override
+    public void render(float delta) {
+        ScreenUtils.clear(0, 0, 0, 1);
+        batch.begin();
+        batch.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        batch.end();
+
+        stage.act();
+        stage.draw();
+    }
+
     @Override
     public void show() {
         Gdx.input.setInputProcessor(stage);
@@ -75,83 +152,5 @@ public class MenuScreen implements Screen {
         background.dispose();
         stage.dispose();
         skin.dispose();
-    }
-
-    private void createMenu() {
-        Table table = new Table();
-        table.setFillParent(true);
-        table.center();
-        stage.addActor(table);
-
-        TextButton.TextButtonStyle buttonStyle = new TextButton.TextButtonStyle();
-        buttonStyle.font = font;
-        buttonStyle.up = null;  // Transparent background
-
-        // Proper labels instead of placeholders
-        Label.LabelStyle labelStyle = new Label.LabelStyle();
-        labelStyle.font = font;
-
-        Label titleLabel = new Label("Drop", labelStyle);
-        titleLabel.setFontScale(3);
-        titleLabel.setAlignment(Align.center);
-        table.add(titleLabel).padBottom(50).align(Align.center).row();
-
-        Label highScoreLabel = new Label("High Score: " + highScore, labelStyle);
-        highScoreLabel.setAlignment(Align.center);
-        table.add(highScoreLabel).padBottom(30).align(Align.center).row();
-
-        // Buttons
-        TextButton startButton = new TextButton("Start Game", buttonStyle);
-        startButton.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                ScreenManager.setScreen(ScreenManager.ScreenType.GAME);
-            }
-        });
-
-        TextButton optionsButton = new TextButton("Options", buttonStyle);
-        optionsButton.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                ScreenManager.setScreen(ScreenManager.ScreenType.OPTIONS);
-            }
-        });
-
-        TextButton exitGameButton = new TextButton("Exit Game", buttonStyle);
-        exitGameButton.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                Gdx.app.exit();
-            }
-        });
-
-        // Add buttons with padding
-        table.add(startButton).padBottom(20).align(Align.center).row();
-        table.add(optionsButton).padBottom(20).align(Align.center).row();
-        table.add(exitGameButton).align(Align.center).row();
-    }
-
-    private int loadHighScore() {
-        FileHandle file = Gdx.files.local("highscore.txt");
-        if (file.exists()) {
-            try {
-                return Integer.parseInt(file.readString());
-            } catch (NumberFormatException e) {
-                return 0;
-            }
-        } else {
-            return 0;
-        }
-    }
-
-    @Override
-    public void render(float delta) {
-        ScreenUtils.clear(0, 0, 0, 1);
-        batch.begin();
-        batch.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        batch.end();
-
-        stage.act();
-        stage.draw();
     }
 }

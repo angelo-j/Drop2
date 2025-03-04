@@ -5,6 +5,7 @@ import com.badlogic.drop2.managers.ScreenManager;
 import com.badlogic.drop2.managers.SoundManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -54,21 +55,20 @@ public class PauseScreen implements Screen {
 
         TextButton.TextButtonStyle buttonStyle = new TextButton.TextButtonStyle();
         buttonStyle.font = font;
-        buttonStyle.up = null;  // Transparent background
+        buttonStyle.up = null;
+        buttonStyle.overFontColor = Color.YELLOW;  // Yellow border on hover
 
-        // Proper labels instead of placeholders
         Label.LabelStyle labelStyle = new Label.LabelStyle();
         labelStyle.font = font;
 
         Label titleLabel = new Label("Paused", labelStyle);
         titleLabel.setAlignment(Align.center);
-        table.add(titleLabel).padBottom(50).align(Align.center).row();
+        table.add(titleLabel).padBottom(30).align(Align.center).row();
 
         Label scoreLabel = new Label("Score: " + currentScore, labelStyle);
         scoreLabel.setAlignment(Align.center);
-        table.add(scoreLabel).padBottom(30).align(Align.center).row();
+        table.add(scoreLabel).padBottom(20).align(Align.center).row();
 
-        // Resume Button
         TextButton resumeButton = new TextButton("Resume", buttonStyle);
         resumeButton.addListener(new ClickListener() {
             @Override
@@ -78,7 +78,6 @@ public class PauseScreen implements Screen {
             }
         });
 
-        // Quit Button
         TextButton quitButton = new TextButton("Quit", buttonStyle);
         quitButton.addListener(new ClickListener() {
             @Override
@@ -88,7 +87,6 @@ public class PauseScreen implements Screen {
             }
         });
 
-        // Add buttons to table with padding
         table.add(resumeButton).padBottom(20).align(Align.center).row();
         table.add(quitButton).align(Align.center).row();
     }
@@ -120,9 +118,9 @@ public class PauseScreen implements Screen {
 
     @Override
     public void dispose() {
-        backgroundTexture.dispose();
         stage.dispose();
         skin.dispose();
+        backgroundTexture.dispose();
         shapeRenderer.dispose();
     }
 

@@ -44,8 +44,10 @@ public class GameScreen implements Screen {
         dropTexture = new Texture("visual/drop.png");
         backgroundTexture = new Texture("visual/background.png");
 
+        // Prepares rudimentary collision for bucket
         bucketRectangle = new Rectangle(Gdx.graphics.getWidth() / 2f - 32, 20, 64, 64);
 
+        // Replenishes Raindrop Array
         if (rainDrops.size == 0) {
             spawnRaindrop();
         }
@@ -81,6 +83,8 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
+
+        // Implements timer
         long elapsedTime = (TimeUtils.nanoTime() - startTime) / 1000000000;
         remainingTime = 30 - (int) elapsedTime;
 
@@ -93,9 +97,12 @@ public class GameScreen implements Screen {
             ScreenManager.setScreen(ScreenManager.ScreenType.MAIN_MENU);  // Go back to MenuScreen
         }
 
+        // Clear screen
         ScreenUtils.clear(0, 0, 0, 1);
 
+        // Prepare batch
         batch.begin();
+
         batch.draw(backgroundTexture, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         font.draw(batch, "Score: " + score, Gdx.graphics.getWidth() / 2f, Gdx.graphics.getHeight() - 20, 0, Align.center, false);
         font.draw(batch, "High Score: " + highScore, Gdx.graphics.getWidth() / 2f, Gdx.graphics.getHeight() - 50, 0, Align.center, false);
@@ -104,10 +111,11 @@ public class GameScreen implements Screen {
         for (Raindrop raindrop : rainDrops) {
             raindrop.draw(batch);
         }
+
         batch.end();
 
-        handleInput(delta);
-        updateRaindrops(delta);
+        handleInput(delta); // Important: handles user left-right input and screen bounds
+        updateRaindrops(delta); // Maintains rainfall
     }
 
     private void handleInput(float delta) {

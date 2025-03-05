@@ -95,7 +95,7 @@ This project is licensed under the MIT License.
 
 ## 📦 Asset Attribution
 
-- All current **visuals** and **audio** assets used in this project belong to **LibGDX**.  
+- All current **visual** and **audio** assets used in this project belong to **LibGDX**.  
   These assets are used for educational and non-commercial purposes only.  
   For more information about LibGDX, visit: [LibGDX Official Site](https://libgdx.com/).  
 

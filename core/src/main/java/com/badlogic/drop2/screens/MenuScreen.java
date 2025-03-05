@@ -46,11 +46,14 @@ public class MenuScreen implements Screen {
     }
 
     private void createMenu() {
+
+        // All on-screen elements share one table
         Table table = new Table();
         table.setFillParent(true);
         table.center();
         stage.addActor(table);
 
+        // Simple button setup, prepares yellow button highlight
         TextButton.TextButtonStyle buttonStyle = new TextButton.TextButtonStyle();
         buttonStyle.font = font;
         buttonStyle.up = null;
@@ -60,7 +63,7 @@ public class MenuScreen implements Screen {
         labelStyle.font = font;
 
         Label titleLabel = new Label("Drop", labelStyle);
-        titleLabel.setFontScale(3);
+        titleLabel.setFontScale(3, 5);
         titleLabel.setAlignment(Align.center);
         table.add(titleLabel).padBottom(30).align(Align.center).row();
 
@@ -72,7 +75,7 @@ public class MenuScreen implements Screen {
         startButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                ScreenManager.setScreen(ScreenManager.ScreenType.GAME);
+                ScreenManager.setScreen(ScreenManager.ScreenType.GAME);         // Switches to GameScreen
             }
         });
 
@@ -80,7 +83,7 @@ public class MenuScreen implements Screen {
         optionsButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                ScreenManager.setScreen(ScreenManager.ScreenType.OPTIONS);
+                ScreenManager.setScreen(ScreenManager.ScreenType.OPTIONS);      // Switches to OptionsScreen
             }
         });
 
@@ -97,6 +100,7 @@ public class MenuScreen implements Screen {
         table.add(exitGameButton).align(Align.center).row();
     }
 
+    // Loads high score from highscore.txt
     private int loadHighScore() {
         FileHandle file = Gdx.files.local("highscore.txt");
         if (file.exists()) {

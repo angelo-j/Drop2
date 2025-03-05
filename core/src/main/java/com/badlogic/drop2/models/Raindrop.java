@@ -30,12 +30,12 @@ public class Raindrop {
         return hitbox.y + 64 < 0;
     }
 
-    // Checks if the raindrop overlaps with another Rectangle (like the bucket)
+    // Checks if the raindrop overlaps with another Rectangle
     public boolean overlaps(Rectangle other) {
         return hitbox.overlaps(other);
     }
 
-    // Returns the hitbox for collision detection
+    // Returns the hitbox for collision
     public Rectangle getHitbox() {
         return hitbox;
     }

@@ -83,7 +83,8 @@ git clone https://github.com/angelo-j/Drop2
 
 - Additional obstacles with different speeds.  
 - Expanded soundtracks and sound effects.  
-- Improved UI and visual effects.  
+- Improved UI and visual effects. 
+- iOS compatibility. 
 ---
 
 ## 🖇️ Contributing
@@ -94,7 +95,7 @@ git clone https://github.com/angelo-j/Drop2
 
 ## 📜 License
 
-- This project is built on the LibGDX framework, which is licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+- The LibGDX framework this project uses is licensed under the [Apache License 2.0](LICENSE.txt).
 - This source code does **not** have an open-source license.  
 - Feel **free to view, play, and contribute**, but please ask for permission before using or redistributing the code.
 - The assets (**images**, **fonts**, **audio**) are subject to their respective licenses and are used here with attribution.

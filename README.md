@@ -67,9 +67,9 @@ The game features a main menu, options for sound and music control, a pause menu
 
 ### 1. Clone the repository:
 
-\`\`\`bash
-git clone https://github.com/yourusername/Drop2.git
-\`\`\`
+```bash
+git clone https://github.com/angelo-j/Drop2
+```
 
 ### 2. Import the project:
 - Import into your IDE as a Gradle project.
@@ -84,22 +84,30 @@ git clone https://github.com/yourusername/Drop2.git
 - Additional obstacles with different speeds.  
 - Expanded soundtracks and sound effects.  
 - Improved UI and visual effects.  
+---
+
+## 🖇️ Contributing
+
+- Feel free to fork this repository and submit pull requests!  
 
 ---
 
 ## 📜 License
 
-This project is licensed under the MIT License.
+- This project is built on the LibGDX framework, which is licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+- This source code does **not** have an open-source license.  
+- Feel **free to view, play, and contribute**, but please ask for permission before using or redistributing the code.
+- The assets (**images**, **fonts**, **audio**) are subject to their respective licenses and are used here with attribution.
 
 ---
 
 ## 📦 Asset Attribution
 
-- All current **visual** and **audio** assets used in this project belong to **LibGDX**.  
-  These assets are used for educational and non-commercial purposes only.  
-  For more information about LibGDX, visit: [LibGDX Official Site](https://libgdx.com/).  
-
-- The font **"Sigmar-Regular.ttf"** is part of [Google Fonts](https://fonts.google.com/) and is used under the Open Font License.  
+- All current **visuals** and **audio** assets used in this project belong to **LibGDX** and are used for educational and non-commercial purposes only.  
+For more information about LibGDX and its assets, visit the [LibGDX Official Site](https://libgdx.com/).  
+These assets are sourced from the [A Simple Game](https://libgdx.com/wiki/start/a-simple-game) tutorial.
+  
+- The font **"Sigmar-Regular.ttf"** is part of [Google Fonts](https://fonts.google.com/) and is used under the [Open Font License](OFL.txt).  
   For more information about the font, visit: [Sigmar on Google Fonts](https://fonts.google.com/specimen/Sigmar).  
 
 ---
@@ -128,12 +136,6 @@ The Gradle wrapper is included, so you can run Gradle tasks using `gradlew.bat` 
 - `clean`: Remove build folders.  
 - `lwjgl3:jar`: Build a runnable jar.  
 - `lwjgl3:run`: Run the application.  
-
----
-
-## 🖇️ Contributing
-
-Feel free to fork this repository and submit pull requests!  
 
 ---
 

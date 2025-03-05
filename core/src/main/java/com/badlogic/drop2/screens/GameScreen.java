@@ -31,7 +31,7 @@ public class GameScreen implements Screen {
     private int highScore = 0;
     private long lastDropTime;
     private long startTime;
-    private int remainingTime = 30;  // 30-second timer
+    private int remainingTime = 45;
     private BitmapFont font;
     private boolean isPaused = false;
 
@@ -56,7 +56,7 @@ public class GameScreen implements Screen {
 
     private void spawnRaindrop() {
         float x = MathUtils.random(0, Gdx.graphics.getWidth() - 64);
-        float speed = MathUtils.random(180, 220);  // Random speed for each drop
+        float speed = MathUtils.random(150, 250);  // Random speed for each drop
         rainDrops.add(new Raindrop(dropTexture, x, Gdx.graphics.getHeight(), speed));
         lastDropTime = TimeUtils.nanoTime();
     }

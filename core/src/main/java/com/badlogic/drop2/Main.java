@@ -2,6 +2,7 @@ package com.badlogic.drop2;
 
 import com.badlogic.drop2.managers.SoundManager;
 import com.badlogic.drop2.managers.ScreenManager;
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -31,6 +32,7 @@ public class Main extends Game {
         }
 
         ScreenManager.setScreen(ScreenManager.ScreenType.MAIN_MENU);
+
     }
 
     @Override

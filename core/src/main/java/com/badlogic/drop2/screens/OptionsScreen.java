@@ -66,7 +66,7 @@ public class OptionsScreen implements Screen {
         buttonStyle.overFontColor = Color.YELLOW;  // Yellow border on hover
 
         Label titleLabel = new Label("Options", labelStyle);
-        titleLabel.setFontScale(2);
+        titleLabel.setFontScale(2.5f);
         titleLabel.setAlignment(Align.center);
         table.add(titleLabel).padBottom(30).align(Align.center).row();
 
@@ -79,7 +79,7 @@ public class OptionsScreen implements Screen {
                 System.out.println("High score reset to 0!");
             }
         });
-        table.add(resetScoreButton).padTop(20).align(Align.center).row();
+        table.add(resetScoreButton).padTop(20).padBottom(20).align(Align.center).row();
 
         Label soundLabel = new Label("Sound Effects Volume", labelStyle);
         soundLabel.setAlignment(Align.center);
@@ -99,6 +99,9 @@ public class OptionsScreen implements Screen {
         checkBoxStyle.font = font;
         checkBoxStyle.checkboxOn = skin.getDrawable("check-on");
         checkBoxStyle.checkboxOff = skin.getDrawable("check-off");
+        checkBoxStyle.fontColor = Color.WHITE;         // Default text color
+        checkBoxStyle.overFontColor = Color.YELLOW;    // Text color on hover (yellow highlight)
+
 
         CheckBox soundMuteToggle = new CheckBox(" Mute Sound Effects", checkBoxStyle);
         soundMuteToggle.setChecked(soundMuted);
@@ -208,7 +211,6 @@ public class OptionsScreen implements Screen {
 
         batch.begin();
         batch.draw(backgroundTexture, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        font.draw(batch, "Options", Gdx.graphics.getWidth() / 2f, Gdx.graphics.getHeight() - 50, 0, Align.center, false);
         batch.end();
 
         stage.act(delta);

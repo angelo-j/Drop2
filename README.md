@@ -81,6 +81,7 @@ git clone https://github.com/angelo-j/Drop2
 
 ## 🗺️ Future Plans
 
+- Unit tests.
 - Additional obstacles with different speeds.  
 - Expanded soundtracks and sound effects.  
 - Improved UI and visual effects. 

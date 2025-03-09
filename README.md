@@ -1,8 +1,9 @@
 
 # Drop2 - A LibGDX Rain Catching Game
 
-Your goal is simple: control a bucket to catch as many falling raindrops as possible before time runs out!
-Featuring a sleek main menu, customizable sound and music settings, a pause menu, and a local high score system, Drop2 offers a polished and replayable arcade experience.
+Drop2 is a fast-paced arcade game developed with the LibGDX framework in Java.
+The objective is to control a bucket and catch as many falling raindrops as possible before time runs out.
+Featuring a responsive main menu, customizable sound and music settings, a pause menu, randomized raindrop speed, and a persistent high score system, Drop2 demonstrates proficiency in game development, UI design, and state management using Gradle and the new LWJGL3 backend.  
 ---
 
 ## 📌 Features

@@ -1,10 +1,8 @@
 
 # Drop2 - A LibGDX Rain Catching Game
 
-Drop2 is a simple yet engaging game developed using the LibGDX framework.  
-The objective is to control a bucket to catch falling raindrops.  
-The game features a main menu, options for sound and music control, a pause menu, and a high score tracking system.
-
+Your goal is simple: control a bucket to catch as many falling raindrops as possible before time runs out!
+Featuring a sleek main menu, customizable sound and music settings, a pause menu, and a local high score system, Drop2 offers a polished and replayable arcade experience.
 ---
 
 ## 📌 Features
@@ -41,7 +39,7 @@ The game features a main menu, options for sound and music control, a pause menu
 |---------------------------|-----------------|
 | Move Bucket               | Arrow Keys      |
 | Open Pause Menu           | ESC             |
-| Navigate Menus            | Mouse           |
+| Navigate Menus            | Mouse Click     |
 
 ---
 
@@ -55,8 +53,9 @@ The game features a main menu, options for sound and music control, a pause menu
 
 ## 🛠️ Technical Details
 
-- **Language:** Java  
-- **Framework:** LibGDX  
+- **Language:** Java (JDK 8)  
+- **Framework:** LibGDX 1.13.1  
+- Gradle Build 8.12.1  
 - **Project Structure:** Follows the new LibGDX structure with `lwjgl3`.  
 - **Screen Management:** Uses `ScreenManager` for transitions.  
 - **Sound Management:** Handled by `SoundManager`.  
@@ -75,7 +74,7 @@ git clone https://github.com/angelo-j/Drop2
 - Import into your IDE as a Gradle project.
 
 ### 3. Run the game:
-- Run the desktop launcher from the `lwjgl3` package.
+- Run the Lwjgl3Launcher from the `lwjgl3` package.
 
 ---
 
@@ -90,7 +89,16 @@ git clone https://github.com/angelo-j/Drop2
 
 ## 🖇️ Contributing
 
-- Feel free to fork this repository and submit pull requests!  
+- Fork this repository and create a branch (feature/your-feature-name) for your feature.  
+- Submit a pull request with a description of your changes.  
+---
+
+## 🗂️ Platforms
+
+- **`core`:** Main module with the application logic shared by all platforms.  
+- **`lwjgl3`:** Primary desktop platform using LWJGL3; previously called 'desktop'.  
+- **`ios`:** Planned iOS mobile platform using RoboVM.  
+- **`ios-moe`:** Planned iOS mobile backend using Multi-OS Engine.  
 
 ---
 
@@ -98,7 +106,7 @@ git clone https://github.com/angelo-j/Drop2
 
 - The LibGDX framework this project uses is licensed under the [Apache License 2.0](LICENSE.txt).
 - This source code does **not** have an open-source license.  
-- Feel **free to view, play, and contribute**, but please ask for permission before using or redistributing the code.
+- Feel free to view, play, and contribute. Please contact me for permissions before using or redistributing the code.  
 - The assets (**images**, **fonts**, **audio**) are subject to their respective licenses and are used here with attribution.
 
 ---
@@ -106,20 +114,11 @@ git clone https://github.com/angelo-j/Drop2
 ## 📦 Asset Attribution
 
 - All current **visuals** and **audio** assets used in this project belong to **LibGDX** and are used for educational and non-commercial purposes only.  
-For more information about LibGDX and its assets, visit the [LibGDX Official Site](https://libgdx.com/).  
-These assets are sourced from the [A Simple Game](https://libgdx.com/wiki/start/a-simple-game) tutorial.
+For more information about LibGDX, visit the [LibGDX Official Site](https://libgdx.com/).  
+These assets are sourced from the [A Simple Game](https://libgdx.com/wiki/start/a-simple-game) framework tutorial.
   
 - The font **"Sigmar-Regular.ttf"** is part of [Google Fonts](https://fonts.google.com/) and is used under the [Open Font License](OFL.txt).  
   For more information about the font, visit: [Sigmar on Google Fonts](https://fonts.google.com/specimen/Sigmar).  
-
----
-
-## 🗂️ Platforms
-
-- **`core`:** Main module with the application logic shared by all platforms.  
-- **`lwjgl3`:** Primary desktop platform using LWJGL3; previously called 'desktop'.  
-- **`ios`:** iOS mobile platform using RoboVM.  
-- **`ios-moe`:** iOS mobile backend using Multi-OS Engine.  
 
 ---
 

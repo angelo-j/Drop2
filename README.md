@@ -54,7 +54,7 @@ Featuring a responsive main menu, customizable sound and music settings, a pause
 
 ## 🛠️ Technical Details
 
-- **Language:** Java (JDK 8)  
+- **Language:** Java (JDK 23)  
 - **Framework:** LibGDX 1.13.1  
 - Gradle Build 8.12.1  
 - **Project Structure:** Follows the new LibGDX structure with `lwjgl3`.  

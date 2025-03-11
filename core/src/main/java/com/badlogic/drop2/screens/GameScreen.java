@@ -47,6 +47,9 @@ public class GameScreen implements Screen {
         // Prepares rudimentary collision for bucket
         bucketRectangle = new Rectangle(Gdx.graphics.getWidth() / 2f - 32, 20, 64, 64);
 
+        // Removes raindrops from previous game
+        rainDrops.clear();
+
         // Replenishes Raindrop Array
         if (rainDrops.size == 0) {
             spawnRaindrop();
@@ -58,7 +61,7 @@ public class GameScreen implements Screen {
 
     private void spawnRaindrop() {
         float x = MathUtils.random(0, Gdx.graphics.getWidth() - 64);
-        float speed = MathUtils.random(150, 250);  // Random speed for each drop
+        float speed = MathUtils.random(100, 300);  // Random speed for each drop. Change numbers to change range.
         rainDrops.add(new Raindrop(dropTexture, x, Gdx.graphics.getHeight(), speed));
         lastDropTime = TimeUtils.nanoTime();
     }
@@ -100,9 +103,10 @@ public class GameScreen implements Screen {
         // Clear screen
         ScreenUtils.clear(0, 0, 0, 1);
 
-        // Prepare batch
+        // Begin batch
         batch.begin();
 
+        // Draw
         batch.draw(backgroundTexture, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         font.draw(batch, "Score: " + score, Gdx.graphics.getWidth() / 2f, Gdx.graphics.getHeight() - 20, 0, Align.center, false);
         font.draw(batch, "High Score: " + highScore, Gdx.graphics.getWidth() / 2f, Gdx.graphics.getHeight() - 50, 0, Align.center, false);
@@ -112,6 +116,7 @@ public class GameScreen implements Screen {
             raindrop.draw(batch);
         }
 
+        // End batch
         batch.end();
 
         handleInput(delta); // Important: handles user left-right input and screen bounds

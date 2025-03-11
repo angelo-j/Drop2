@@ -62,10 +62,10 @@ public class MenuScreen implements Screen {
         Label.LabelStyle labelStyle = new Label.LabelStyle();
         labelStyle.font = font;
 
-        Label titleLabel = new Label("Drop", labelStyle);
+        Label titleLabel = new Label("Drop2", labelStyle);
         titleLabel.setFontScale(3, 5);
         titleLabel.setAlignment(Align.center);
-        table.add(titleLabel).padBottom(30).align(Align.center).row();
+        table.add(titleLabel).padBottom(40).align(Align.center).row();
 
         Label highScoreLabel = new Label("High Score: " + highScore, labelStyle);
         highScoreLabel.setAlignment(Align.center);
